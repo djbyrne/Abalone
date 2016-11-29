@@ -8,10 +8,10 @@ import javafx.scene.input.MouseEvent;
 
 // class definition for a custom control
 class CellControl extends Control { // constructor for the class 
-	public CellControl(int x, int y) {
+	public CellControl(int x, int y,int t) {
 		// set a default skin and generate a game board
 		setSkin(new CellSkin(this));
-		cell = new Cell(0,10); 
+		cell = new Cell(t,10); 
 		getChildren().add(cell);
 		boardX = x;
 		boardY = y;

@@ -44,7 +44,7 @@ public void setType(int x)
     else hex.setFill(Color.BLACK);
 }
 
-public int returnType()
+public int getType()
 {
 	return type;
 }
