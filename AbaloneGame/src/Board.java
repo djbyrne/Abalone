@@ -11,13 +11,13 @@ class Board extends Pane {
 	public Board() {
 		// initialise the boards 
 		board = new int[9][9]; 
-		renders = new Cell[9][9]; 
+		renders = new CellControl[9][9]; 
 		
 		for(int i = 0; i < 9; i++)
 		{
 			for(int j = 0; j < 9; j++) { 
 				board[i][j] = EMPTY;
-				renders[i][j] = new Cell(0,10); 
+				renders[i][j] = new CellControl(i,j); 
 				
 					//set the position of renders[i][j]
 					//indent every odd row
@@ -113,7 +113,7 @@ public void placePiece(final double x, final double y) {
 }
 // private fields of the class
 private int[][] board; // array that holds all pieces
-private Cell[][] renders; // array that holds all the render pieces
+private CellControl[][] renders; // array that holds all the render pieces
 private Rectangle back; // background of the board
 private Line h1, h2, v1, v2; // horizontal and vertical grid lines 
 private double cell_width, cell_height; 

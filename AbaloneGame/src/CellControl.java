@@ -8,11 +8,13 @@ import javafx.scene.input.MouseEvent;
 
 // class definition for a custom control
 class CellControl extends Control { // constructor for the class 
-	public CellControl() {
+	public CellControl(int x, int y) {
 		// set a default skin and generate a game board
 		setSkin(new CellSkin(this));
 		cell = new Cell(0,10); 
 		getChildren().add(cell);
+		boardX = x;
+		boardY = y;
 	
 	
 	setOnMouseClicked(new EventHandler<MouseEvent>(){
@@ -21,7 +23,7 @@ class CellControl extends Control { // constructor for the class
 		public void handle(MouseEvent event)
 		{
 			cell.placePiece();
-			System.out.println(event.getX()+":"+ event.getY());
+			System.out.println(boardX+":"+ boardY);
 		}
 	});
 }
@@ -33,5 +35,7 @@ public void resize(double width, double height) {
 	cell.resize(width, height);
 }
       // private fields of the class
-private Cell cell; 
+private Cell cell;
+private int boardX;
+private int boardY;
 }

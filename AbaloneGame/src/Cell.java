@@ -10,9 +10,12 @@ class Cell extends Group {
 // constructor for the class 
 	public Cell(int type,int side) {
 		//create new hexagon
+		super();
         hex = new Polygon(new Hexagon(side).getPoints());
         root = new HBox( hex);
+        
         getChildren().addAll(root);
+        
         
 	}
       // overridden version of the resize method
@@ -35,6 +38,7 @@ private int type;
 private Translate pos; // translate that set the position of this piece
 private Polygon hex;
 private HBox root;
+private CellControl cellControl;
 
 // lines for drawing the X piece
       // ellipse for rendering the O piece
