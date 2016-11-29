@@ -15,8 +15,10 @@ class Cell extends Group {
         root = new HBox( hex);
         
         getChildren().addAll(root);
-        
-        
+        if(type == 1)hex.setFill(Color.RED);
+        else if(type == 2)hex.setFill(Color.BLUE);
+        else hex.setFill(Color.BLACK);
+        	
 	}
       // overridden version of the resize method
 @Override
@@ -31,7 +33,20 @@ public void relocate(double x, double y) { }
 
 public void placePiece()
 {
-	this.setOpacity(.5);
+	setType(type + 1);
+}
+
+public void setType(int x)
+{
+	type = x;
+	if(type == 1)hex.setFill(Color.RED);
+    else if(type == 2)hex.setFill(Color.BLUE);
+    else hex.setFill(Color.BLACK);
+}
+
+public int returnType()
+{
+	return type;
 }
 
 private int type;

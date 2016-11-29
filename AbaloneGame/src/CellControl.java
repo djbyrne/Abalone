@@ -34,6 +34,13 @@ public void resize(double width, double height) {
 	super.resize(width, height); 
 	cell.resize(width, height);
 }
+
+public Cell getCell()
+{
+	return cell;
+}
+
+
       // private fields of the class
 private Cell cell;
 private int boardX;
