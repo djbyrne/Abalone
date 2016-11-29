@@ -26,6 +26,11 @@ super.resize(width, height);
 public void relocate(double x, double y) { }
 // private fields of the class
 
+public void placePiece()
+{
+	this.setOpacity(.5);
+}
+
 private int type;
 private Translate pos; // translate that set the position of this piece
 private Polygon hex;
