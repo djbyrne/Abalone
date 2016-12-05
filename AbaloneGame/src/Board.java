@@ -63,29 +63,22 @@ public void resize(double width, double height) {
     cell_height = height / 9.0;
 }
 
-      // public method for resetting the game
-public void resetGame() {
+public static CellControl getCell(int x, int y)
+{
+	return renders[x][y];
 }
 
-public int startingPositions(int x, int y)
+public static void setCell(int x, int y, int t)
 {
-	//loop through and see if there should be a piece starting in this cell
-	//0 = no piece, 1 = red, 2 = blue
-	int colour = 0;
-	redPieces = new int[][]{{ 2,0} ,{3,0} ,{4,0}, {5,0}, {6,0}, 
-		{2,1} ,{3,1} ,{4,1},{ 5,1},{ 6,1},{ 7,1}, {3,2}, {4,2},{ 5,2}};
-	//loop through red array
-	for(int i = 0; i < 9; i++)
-	{
-		for(int j = 0; j < 9; j++) { 
-			
-			System.out.println(redPieces[i][j]);
-		}
-		
-	}
-	return 0;
+	board[x][y] = t;
+	renders[x][y].getCell().setType(t);
 	
-	
+	//change the opacity to 1
+	renders[x][y].getCell().setOpacity(1);
+}
+
+      // public method for resetting the game
+public void resetGame() {
 }
 
 
@@ -94,8 +87,8 @@ public void placePiece(final double x, final double y) {
 	
 }
 // private fields of the class
-private int[][] board; // array that holds all pieces
-private CellControl[][] renders; // array that holds all the render pieces
+private static int[][] board; // array that holds all pieces
+private static CellControl[][] renders; // array that holds all the render pieces
 private int[][] redPieces;
 private int[][] bluePieces;
 private Rectangle back; // background of the board

@@ -33,14 +33,13 @@ public void relocate(double x, double y) { }
 
 public void placePiece()
 {
-	if(getType() == 1 || getType() == 2)
-	{
-		this.setOpacity(.5);
-		System.out.println("Type:"+ getType());
-	}
-	else this.setType(1);
-		
-	
+	setType(GameLogic.getPlayer());
+	GameLogic.togglePlayer();
+}
+
+public void setSelected()
+{
+	this.setOpacity(.5);
 }
 
 public void setType(int x)
