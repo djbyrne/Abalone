@@ -23,7 +23,6 @@ class CellControl extends Control { // constructor for the class
 		public void handle(MouseEvent event)
 		{
 			cell.placePiece();
-			System.out.println(boardX+":"+ boardY);
 		}
 	});
 }
@@ -33,6 +32,15 @@ public void resize(double width, double height) {
 	// update the size of the rectangle
 	super.resize(width, height); 
 	cell.resize(width, height);
+}
+
+//method to add the direction coordinates
+public int[] checkNeighbour(int[] n){
+	int x2 = boardX  + n[0];
+	int y2 = boardY + n[1];
+	
+	int[] neighbour = new int[]{x2,y2};
+	return neighbour;
 }
 
 public Cell getCell()

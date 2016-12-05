@@ -10,17 +10,6 @@ class Board extends Pane {
 // constructor for the class 
 	public Board() {
 		// initialise the boards 
-		/*board = new int[][]{
-			{3,3,3,3,0,0,3,3,3}, //0
-			{3,3,0,0,0,0,0,2,3}, //1
-			{3,1,0,0,0,0,0,2,2}, //2
-			{3,1,1,0,0,0,2,2,2}, //3
-			{0,1,1,0,0,0,2,2,2}, //4
-			{0,1,1,0,0,0,2,2,2}, //5
-			{3,1,0,0,0,0,0,2,2}, //6
-			{3,1,0,0,0,0,0,3,3}, //7
-			{3,3,3,0,0,3,3,3,3}  //8
-		}; */
 		
 	  board = new int[][]{
 	    {3,3,3,3,0,3,3,3,3}, //0
@@ -34,6 +23,8 @@ class Board extends Pane {
 	    {3,3,3,0,0,0,3,3,3}  //8*/
 	  };
 		renders = new CellControl[9][9]; 
+		
+		
 		
 		
 		for(int i = 0; i < 9; i++)
@@ -57,56 +48,6 @@ class Board extends Pane {
 					getChildren().addAll(renders[i][j]);
 				}
 				//startingPositions(i,j);
-				
-					//set the position of renders[i][j]
-					//indent every odd row
-					/*if(j==0 && i<2 || j==0 && i>6 )
-					{
-						//do nothing
-					}
-					else if(j==1 && i<2 || j==1 && i>7 )
-					{
-						//do nothing
-					}
-					else if(j==2 && i<1 || j==2 && i>7 )
-					{
-						//do nothing
-					}
-					else if(j==3 && i<1 || j==3 && i>8 )
-					{
-						//do nothing
-					}
-					else if(j==5 && i<1 || j==5 && i>8 )
-					{
-						//do nothing
-					}
-					else if(j==6 && i<1 || j==6 && i>7 )
-					{
-						//do nothing
-					}
-					else if(j==7 && i<2 || j==7 && i>7 )
-					{
-						//do nothing
-					}
-					else if(j==8 && i<2 || j==8 && i>6 )
-					{
-						//do nothing
-					}
-					else
-					{
-						if(j %2 == 0)
-						{
-							renders[i][j].setLayoutX((i*38.88)+19.44);
-						}
-						else
-						{
-							renders[i][j].setLayoutX(i*(38.88));
-						}
-						
-						renders[i][j].setLayoutY(j*(17));
-						getChildren().addAll(renders[i][j]);
-					}*/
-				
 				
 			}				
 		}
@@ -150,25 +91,7 @@ public int startingPositions(int x, int y)
 
       // public method that tries to place a piece
 public void placePiece(final double x, final double y) {
-	// translate the x, y coordinates into cell indexes
-	int indexx = (int) (x / cell_width); 
-	int indexy = (int) (y/cell_height);
 	
-	
-	
-	if(indexy%2==0)
-	{
-		System.out.println("even line");
-		indexx = (int) (x - 17);
-		indexx = (int) (indexx / cell_width);
-	}
-	else
-	{
-		System.out.println("odd line");
-		
-	}
-	
-	renders[indexx][indexy].setOpacity(.5);
 }
 // private fields of the class
 private int[][] board; // array that holds all pieces

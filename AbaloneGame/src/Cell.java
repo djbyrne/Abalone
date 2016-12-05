@@ -8,12 +8,12 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.transform.Translate;
 class Cell extends Group {
 // constructor for the class 
-	public Cell(int type,int side) {
+	public Cell(int t,int side) {
 		//create new hexagon
 		super();
         hex = new Polygon(new Hexagon(side).getPoints());
         root = new HBox( hex);
-        
+        type = t;
         getChildren().addAll(root);
         if(type == 1)hex.setFill(Color.RED);
         else if(type == 2)hex.setFill(Color.BLUE);
@@ -33,7 +33,14 @@ public void relocate(double x, double y) { }
 
 public void placePiece()
 {
-	setType(type + 1);
+	if(getType() == 1 || getType() == 2)
+	{
+		this.setOpacity(.5);
+		System.out.println("Type:"+ getType());
+	}
+	else this.setType(1);
+		
+	
 }
 
 public void setType(int x)
