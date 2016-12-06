@@ -43,15 +43,18 @@ public class GameLogic {
 	
 	public static void emptySelected()
 	{
+		//selected [0].getCell().setOpacity(1);
 		selected [0] = null;
+		//selected [1].getCell().setOpacity(1);
 		selected [1] = null;
+		//selected [2].getCell().setOpacity(1);
 		selected [2] = null;
+		System.out.println("emtpied");
 	}
 	
 	public static void movePiece()
 	{
-		//change to empty at the selected position
-		
+		//change to empty at the selected position	
 	}
 	
 	

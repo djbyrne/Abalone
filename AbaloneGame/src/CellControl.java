@@ -18,9 +18,8 @@ class CellControl extends Control { // constructor for the class
 		boardY = y;
 		
 		//initialising the directions array to values 0-5
-        directions = new int[9][9];
+        directions = new int[6][2];
 
-       
         // hard coded even directions
         evenDirections = new int[][]{ {0,-1},{1,-1},{1,0},{1,1},{0,1},{-1,0}};
         // hard coded odd directions
@@ -44,28 +43,36 @@ class CellControl extends Control { // constructor for the class
 			
 			//System.out.println(Board.getCell(boardX, boardY).getCell().getType());
 			//check if piece is selected
-			CellControl[] selected = GameLogic.getSelected();
-			CellControl first = selected[0];
-			if(selected[0] != null && cell.getType() == 0)
-			{
-				//delete selected piece
-				Board.setCell(first.getBoardX(), first.getBoardY(), 0);
-				GameLogic.emptySelected();
-				
-				//place new piece
-				cell.placePiece();
-			}
-			else
-			{
-				System.out.println("no piece selected");
-			}
-			//cell.placePiece();
-			
-			
-			
 			//right click
 			if (((MouseEvent) event).getButton().equals(MouseButton.SECONDARY))
-				rightClick();
+			{
+				//rightClick();
+				System.out.println("x:"+directions[0][0]+" y:"+directions[0][1]);
+				//return new cell
+				CellControl cc = Board.getCell(boardX+directions[0][0], boardY+directions[0][1]);
+				
+				cc.setOpacity(0.2);
+			}
+			else{
+				CellControl[] selected = GameLogic.getSelected();
+				CellControl first = selected[0];
+				if(selected[0] != null && cell.getType() == 0)
+				{
+					//delete selected piece
+					Board.setCell(first.getBoardX(), first.getBoardY(), 0);
+					GameLogic.emptySelected();
+					
+					//place new piece
+					//cell.placePiece();
+					
+				}
+				else
+				{
+					System.out.println("no piece selected");
+				}
+				//cell.placePiece();
+			}
+			System.out.println("x:"+boardX+" y:"+boardY);	
 		}
 	});
 }

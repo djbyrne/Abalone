@@ -12,6 +12,7 @@ class Board extends Pane {
 		// initialise the boards 
 		
 	  board = new int[][]{
+	//	 0 1 2 3 4 5 6 7 8
 	    {3,3,3,3,0,3,3,3,3}, //0
 	    {3,3,0,0,0,0,0,3,3}, //1
 	    {1,1,0,0,0,0,0,2,2}, //2
@@ -22,6 +23,7 @@ class Board extends Pane {
 	    {3,1,0,0,0,0,0,2,3}, //7
 	    {3,3,3,0,0,0,3,3,3}  //8*/
 	  };
+	   
 		renders = new CellControl[9][9]; 
 		
 		
