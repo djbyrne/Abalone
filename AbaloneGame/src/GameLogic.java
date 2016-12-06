@@ -15,7 +15,7 @@ public class GameLogic {
 	public static void setSelected(CellControl c)
 	{
 		
-		System.out.println(c);
+		//System.out.println(c);
 		if(c.getCell().getType() != 0)
 		{
 			if(selected[0] == null)
@@ -23,9 +23,9 @@ public class GameLogic {
 				selected[0] = c;
 				c.getCell().setSelected();
 				//setPlayer(c.getCell().getType());
-				System.out.println("selected piece at: "+c.getBoardX()+":"+c.getBoardY());
+				//System.out.println("selected piece at: "+c.getBoardX()+":"+c.getBoardY());
 			}
-			else if(selected[1] == null && getPlayer() == c.getCell().getType())
+			/*else if(selected[1] == null && getPlayer() == c.getCell().getType())
 			{
 				selected[1] = c;
 				c.getCell().setSelected();
@@ -34,7 +34,7 @@ public class GameLogic {
 			{
 				selected[2] = c;
 				c.getCell().setSelected();
-			}
+			}*/
 		}
 		
 		
@@ -46,9 +46,9 @@ public class GameLogic {
 		//selected [0].getCell().setOpacity(1);
 		selected [0] = null;
 		//selected [1].getCell().setOpacity(1);
-		selected [1] = null;
+		//selected [1] = null;
 		//selected [2].getCell().setOpacity(1);
-		selected [2] = null;
+		//selected [2] = null;
 		System.out.println("emtpied");
 	}
 	
@@ -83,7 +83,7 @@ public class GameLogic {
 	//variables
 	private int gameState = 0;
 	private final static int EMPTY = 0; private final static int BLACK = 1; private final static int WHITE = 2;
-	private static CellControl[] selected = {null,null,null};
+	private static CellControl[] selected = {null};
 	private static int currentPlayer = BLACK;
 	
 

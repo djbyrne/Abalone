@@ -19,14 +19,15 @@ class CellControl extends Control { // constructor for the class
 		
 		//initialising the directions array to values 0-5
         directions = new int[6][2];
-
         // hard coded even directions
         evenDirections = new int[][]{ {0,-1},{1,-1},{1,0},{1,1},{0,1},{-1,0}};
         // hard coded odd directions
         oddDirections = new int[][]{ {-1,-1},{0,-1},{1,0},{0,1},{-1,1},{-1,0}};
+        //emtpy neighbor array
+        neighbors = new CellControl[6];
         
         // checking if x is even or odd
-        if(x%2 == 0){
+        if(y%2 == 0){
         	directions = evenDirections;
         }
         else {
@@ -46,12 +47,8 @@ class CellControl extends Control { // constructor for the class
 			//right click
 			if (((MouseEvent) event).getButton().equals(MouseButton.SECONDARY))
 			{
-				//rightClick();
-				System.out.println("x:"+directions[0][0]+" y:"+directions[0][1]);
-				//return new cell
-				CellControl cc = Board.getCell(boardX+directions[0][0], boardY+directions[0][1]);
+				rightClick();
 				
-				cc.setOpacity(0.2);
 			}
 			else{
 				CellControl[] selected = GameLogic.getSelected();
@@ -62,8 +59,17 @@ class CellControl extends Control { // constructor for the class
 					Board.setCell(first.getBoardX(), first.getBoardY(), 0);
 					GameLogic.emptySelected();
 					
-					//place new piece
-					//cell.placePiece();
+					//check if this piece is a neighbor of the currently selected piece
+					CellControl[] selectedCells = GameLogic.getSelected();
+					/*if(isNeighbor(selectedCells[0]))
+					{
+						//place new piece
+						cell.placePiece();
+					}
+					else
+						System.out.println("not a neighbor of selected piece");	*/
+					
+					cell.placePiece();
 					
 				}
 				else
@@ -72,7 +78,7 @@ class CellControl extends Control { // constructor for the class
 				}
 				//cell.placePiece();
 			}
-			System.out.println("x:"+boardX+" y:"+boardY);	
+			//System.out.println("x:"+boardX+" y:"+boardY);	
 		}
 	});
 }
@@ -84,13 +90,42 @@ public void resize(double width, double height) {
 	cell.resize(width, height);
 }
 
-//method to add the direction coordinates
-public int[] checkNeighbour(int[] n){
-	int x2 = boardX  + n[0];
-	int y2 = boardY + n[1];
+//populates neighbor array
+public void findNeighbors()
+{
+	CellControl cc;
+	for(int i=0; i<directions.length;i++)
+	{
+		cc = Board.getCell(boardX+directions[i][0], boardY+directions[i][1]);
+		neighbors[i] = cc;
+	}
 	
-	int[] neighbour = new int[]{x2,y2};
-	return neighbour;
+	//highlight all neighbours
+	/*for(int i=0;i<neighbors.length;i++)
+	{
+		neighbors[i].setOpacity(.5);
+	}*/
+	
+}
+
+//method to add the direction coordinates
+/*public boolean checkNeighbour(CellControl c1){
+	CellControl[] c2 = GameLogic.getSelected();
+	if
+}*/
+
+//check if a cell is a neighbour of this cell
+public boolean isNeighbor(CellControl c)
+{
+	//loop through array and check if c is contained in the array
+	CellControl cellIt;
+	for(int i=0;i<neighbors.length;i++)
+	{
+		cellIt = neighbors[i];
+		if(cellIt.getBoardX() == c.getBoardX() &&cellIt.getBoardY() == c.getBoardY() )
+			return true;
+	}
+	return false;
 }
 
 public void rightClick()
@@ -116,5 +151,6 @@ private int boardY;
 private int[][] directions;
 private int[][] evenDirections;
 private int[][] oddDirections;
+private CellControl[] neighbors;
 
 }
