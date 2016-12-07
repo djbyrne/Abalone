@@ -56,29 +56,19 @@ class CellControl extends Control { // constructor for the class
 				if(selected[0] != null && cell.getType() == 0)
 				{
 					//delete selected piece
-					Board.setCell(first.getBoardX(), first.getBoardY(), 0);
-					GameLogic.emptySelected();
+					
 					
 					//check if this piece is a neighbor of the currently selected piece
 					CellControl[] selectedCells = GameLogic.getSelected();
-					/*if(isNeighbor(selectedCells[0]))
-					{
-						//place new piece
-						cell.placePiece();
-					}
-					else
-						System.out.println("not a neighbor of selected piece");	*/
-					
-					cell.placePiece();
+					placePiece(first);
 					
 				}
 				else
 				{
 					System.out.println("no piece selected");
 				}
-				//cell.placePiece();
 			}
-			//System.out.println("x:"+boardX+" y:"+boardY);	
+			
 		}
 	});
 }
@@ -93,6 +83,7 @@ public void resize(double width, double height) {
 //populates neighbor array
 public void findNeighbors()
 {
+	//System.out.println("ping");
 	CellControl cc;
 	for(int i=0; i<directions.length;i++)
 	{
@@ -100,19 +91,40 @@ public void findNeighbors()
 		neighbors[i] = cc;
 	}
 	
-	//highlight all neighbours
-	/*for(int i=0;i<neighbors.length;i++)
+}
+
+public void placePiece(CellControl selected){
+	
+	boolean place = false;
+	CellControl[] n = GameLogic.getSelectedNeighbors();
+	
+	for(int i=0;i<n.length;i++)
 	{
-		neighbors[i].setOpacity(.5);
-	}*/
+		if(n[i].getBoardX() == this.getBoardX() && n[i].getBoardY() == this.getBoardY())
+		{
+			place = true;
+		}
+	}
+	
+	if(place)
+	{
+		cell.placePiece();
+		Board.setCell(selected.getBoardX(), selected.getBoardY(), 0);
+		GameLogic.emptySelected();
+		System.out.println("place piece");
+	}
+	else
+	{
+		System.out.println("invalid move");
+	}
 	
 }
 
-//method to add the direction coordinates
-/*public boolean checkNeighbour(CellControl c1){
-	CellControl[] c2 = GameLogic.getSelected();
-	if
-}*/
+public CellControl[] getNieghbors()
+{
+	findNeighbors();
+	return neighbors;
+}
 
 //check if a cell is a neighbour of this cell
 public boolean isNeighbor(CellControl c)
@@ -133,6 +145,7 @@ public void rightClick()
 	//check if the cell clicked is the correct player
 	if(GameLogic.getPlayer() == cell.getType())GameLogic.setSelected(this);
 	else System.out.println("not your turn");
+	findNeighbors();
 }
 
 public Cell getCell()

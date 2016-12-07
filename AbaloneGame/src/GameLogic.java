@@ -21,7 +21,9 @@ public class GameLogic {
 			if(selected[0] == null)
 			{
 				selected[0] = c;
-				c.getCell().setSelected();
+				
+				selected[0].getCell().setSelected();
+				setSelectedNeighbors();
 				//setPlayer(c.getCell().getType());
 				//System.out.println("selected piece at: "+c.getBoardX()+":"+c.getBoardY());
 			}
@@ -52,12 +54,15 @@ public class GameLogic {
 		System.out.println("emtpied");
 	}
 	
-	public static void movePiece()
+	public static void setSelectedNeighbors()
 	{
-		//change to empty at the selected position	
+		selectedNeighbours = selected[0].getNieghbors();
 	}
 	
-	
+	public static CellControl[] getSelectedNeighbors()
+	{
+		return selectedNeighbours;
+	}
 	
 	public static void printArray()
 	{
@@ -84,6 +89,7 @@ public class GameLogic {
 	private int gameState = 0;
 	private final static int EMPTY = 0; private final static int BLACK = 1; private final static int WHITE = 2;
 	private static CellControl[] selected = {null};
+	private static CellControl[] selectedNeighbours = new CellControl[6];
 	private static int currentPlayer = BLACK;
 	
 

@@ -102,6 +102,7 @@ private Translate ch_one, ch_two, cw_one, cw_two;
 private int current_player;
 private int rowCounter,cellCounter,maxCounter;
 
+
       // constants for the class
 private final int EMPTY = 0; private final int BLACK = 1; private final int WHITE = 2;
 }

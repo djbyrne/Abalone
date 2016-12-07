@@ -33,6 +33,7 @@ public void relocate(double x, double y) { }
 
 public void placePiece()
 {
+	
 	setType(GameLogic.getPlayer());
 	GameLogic.togglePlayer();
 }
@@ -44,6 +45,7 @@ public void setSelected()
 
 public void setType(int x)
 {
+	System.out.println("foo");
 	type = x;
 	if(type == 1)hex.setFill(Color.RED);
     else if(type == 2)hex.setFill(Color.BLUE);
