@@ -27,7 +27,7 @@ class CellControl extends Control { // constructor for the class
         neighbors = new CellControl[6];
         
         // checking if x is even or odd
-        if(y%2 == 0){
+        if(y%2 != 0){
         	directions = evenDirections;
         }
         else {
@@ -127,7 +127,7 @@ public CellControl[] getNieghbors()
 }
 
 //check if a cell is a neighbour of this cell
-public boolean isNeighbor(CellControl c)
+public int isNeighbor(CellControl c)
 {
 	//loop through array and check if c is contained in the array
 	CellControl cellIt;
@@ -135,17 +135,18 @@ public boolean isNeighbor(CellControl c)
 	{
 		cellIt = neighbors[i];
 		if(cellIt.getBoardX() == c.getBoardX() &&cellIt.getBoardY() == c.getBoardY() )
-			return true;
+			return i;
 	}
-	return false;
+	return 7;
 }
 
 public void rightClick()
 {
 	//check if the cell clicked is the correct player
+	findNeighbors();
 	if(GameLogic.getPlayer() == cell.getType())GameLogic.setSelected(this);
 	else System.out.println("not your turn");
-	findNeighbors();
+	
 }
 
 public Cell getCell()
@@ -165,5 +166,6 @@ private int[][] directions;
 private int[][] evenDirections;
 private int[][] oddDirections;
 private CellControl[] neighbors;
+private boolean isSelected;
 
 }

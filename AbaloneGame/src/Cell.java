@@ -62,8 +62,4 @@ private Translate pos; // translate that set the position of this piece
 private Polygon hex;
 private HBox root;
 private CellControl cellControl;
-
-// lines for drawing the X piece
-      // ellipse for rendering the O piece
-// maintain a copy of the piece type we have
 }
