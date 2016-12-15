@@ -5,7 +5,7 @@ class Hexagon {
       
       double C = side;
       double A = (.5)*C;
-      double B = Math.sin(60)*60;
+      double B = Math.sin(60)*70;
       points = new double[12];
       //pointy hexagon
       //     X                          Y

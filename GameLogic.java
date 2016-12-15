@@ -149,6 +149,13 @@ public class GameLogic {
 	public static void togglePlayer()
 	{
 		Abalone_main.setPlayer(currentPlayer);
+		if(currentPlayer == RED){
+			Abalone_main.setScore(scoreRed);	
+		}
+		else if(currentPlayer == BLUE){
+			Abalone_main.setScore(scoreBlue);
+		}
+		
 		if(currentPlayer == 1)currentPlayer = 2;
 		else if(currentPlayer == 2)currentPlayer = 1;
 	}
@@ -167,13 +174,15 @@ public class GameLogic {
 	
 	//variables
 	private int gameState = 0;
-	private final static int EMPTY = 0; private final static int BLACK = 1; private final static int WHITE = 2;
+	private final static int EMPTY = 0; private final static int RED = 1; private final static int BLUE = 2;
 	private static CellControl[] selected = {null,null,null};
 	private static CellControl[] selectedNeighbours = new CellControl[6];
 	private static CellControl[] targets = new CellControl[3];
-	private static int currentPlayer = BLACK;
+	private static int currentPlayer = RED;
 	private static int selDir = 6;
 	private static int moveDir = 6;
+	private static int scoreRed;
+	private static int scoreBlue;
 
 	
 

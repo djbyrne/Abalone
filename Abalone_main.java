@@ -55,7 +55,8 @@ import javafx.stage.Stage;
 		
 		
 		gp.addRow(0,t1,turnLabel);
-		gp.addRow(1,t2, piecesLabel);
+		gp.addRow(1,t2, scoreLabel);
+		gp.addRow(2, errorLabel);
 		gp.setStyle("-fx-background-color: #b5b4ba");
 		gp.setHgap(15);
 		gp.setVgap(15);
@@ -132,6 +133,12 @@ import javafx.stage.Stage;
 			turnLabel.setText("Reds Turn");
 		}
 	}
+	public static void setScore(int s){
+		score = s;
+	}
+	public static void setError(String s){
+		errorLabel.setText(s);
+	}
 	      // private fields for this class
 
 	
@@ -174,9 +181,16 @@ import javafx.stage.Stage;
 	
 	
 	private Text t1 = new Text("Player turn: ");
-	private Text t2 = new Text("Pieces knocked off: ");
+	private Text t2 = new Text("Player Score: ");
 	private static Label turnLabel = new Label("Reds turn");
-	private static Label piecesLabel = new Label("");
+	
+	private static int score;
+	private static Label scoreLabel = new Label(""+score);
+	
+	private static Label errorLabel = new Label("");
+	
+	
+	
 	
 	// adding menu options
 	Menu optionsMenu = new Menu("Options");

@@ -41,14 +41,14 @@ class Board extends Pane {
 				{
 					if(j %2 != 0)
 					{
-						renders[i][j].setLayoutX((i*38.88)+19.44);
+						renders[i][j].setLayoutX((i*50)+25);
 					}
 					else
 					{
-						renders[i][j].setLayoutX(i*(38.88));
+						renders[i][j].setLayoutX(i*(50));
 					}
 					
-					renders[i][j].setLayoutY(j*(17));
+					renders[i][j].setLayoutY(j*(40));
 					getChildren().addAll(renders[i][j]);
 				}
 				//startingPositions(i,j);
