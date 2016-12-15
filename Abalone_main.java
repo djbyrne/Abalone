@@ -126,10 +126,10 @@ import javafx.stage.Stage;
 	}
 	public static void setPlayer(int p){
 		if(p == 1){
-			turnLabel = new Label("Reds Turn");
+			turnLabel.setText("Blues Turn");
 		}
 		else if(p == 2){
-			turnLabel = new Label("Blues Turn");
+			turnLabel.setText("Reds Turn");
 		}
 	}
 	      // private fields for this class
@@ -175,7 +175,7 @@ import javafx.stage.Stage;
 	
 	private Text t1 = new Text("Player turn: ");
 	private Text t2 = new Text("Pieces knocked off: ");
-	private static Label turnLabel = new Label("");
+	private static Label turnLabel = new Label("Reds turn");
 	private static Label piecesLabel = new Label("");
 	
 	// adding menu options

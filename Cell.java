@@ -35,7 +35,6 @@ public void placePiece()
 {
 	
 	setType(GameLogic.getPlayer());
-	GameLogic.togglePlayer();
 }
 
 public void setSelected()
@@ -43,9 +42,13 @@ public void setSelected()
 	this.setOpacity(.5);
 }
 
+public void unsetSelected()
+{
+	this.setOpacity(1);
+}
+
 public void setType(int x)
 {
-	System.out.println("foo");
 	type = x;
 	if(type == 1)hex.setFill(Color.RED);
     else if(type == 2)hex.setFill(Color.BLUE);

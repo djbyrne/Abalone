@@ -47,21 +47,22 @@ class CellControl extends Control { // constructor for the class
 			//right click
 			if (((MouseEvent) event).getButton().equals(MouseButton.SECONDARY))
 			{
+				if(neighbors[0] == null){findNeighbors();}
 				rightClick();
 				
 			}
 			else{
+				
+				//print this cells co-ordinates
+				System.out.println("cell:"+getBoardX()+":"+getBoardY());
+				if(neighbors[0] == null){findNeighbors();}
 				CellControl[] selected = GameLogic.getSelected();
 				CellControl first = selected[0];
 				if(selected[0] != null && cell.getType() == 0)
 				{
-					//delete selected piece
-					
-					
 					//check if this piece is a neighbor of the currently selected piece
 					CellControl[] selectedCells = GameLogic.getSelected();
-					placePiece(first);
-					
+					placePiece(selected);
 				}
 				else
 				{
@@ -93,10 +94,12 @@ public void findNeighbors()
 	
 }
 
-public void placePiece(CellControl selected){
-	
+public void placePiece(CellControl[] selected){
+	//set the move direction
+	GameLogic.setMoveDir(GameLogic.findMoveDir(this));
 	boolean place = false;
 	CellControl[] n = GameLogic.getSelectedNeighbors();
+	
 	
 	for(int i=0;i<n.length;i++)
 	{
@@ -108,10 +111,9 @@ public void placePiece(CellControl selected){
 	
 	if(place)
 	{
-		cell.placePiece();
-		Board.setCell(selected.getBoardX(), selected.getBoardY(), 0);
-		GameLogic.emptySelected();
-		System.out.println("place piece");
+	
+		GameLogic.placePiece();
+		
 	}
 	else
 	{
@@ -137,7 +139,7 @@ public int isNeighbor(CellControl c)
 		if(cellIt.getBoardX() == c.getBoardX() &&cellIt.getBoardY() == c.getBoardY() )
 			return i;
 	}
-	return 7;
+	return 6; //6 means that it is not a neighbor
 }
 
 public void rightClick()

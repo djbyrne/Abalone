@@ -24,8 +24,6 @@ class Hexagon {
       points[8] = 0.0;           points[9] = center * 2;
       points[10] = -side/2;      points[11] = center;*/
       
-      
-
     }
 
 

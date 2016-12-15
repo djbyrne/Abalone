@@ -1,4 +1,3 @@
-// JavaFX example that showcases how to build an entirely custom control // that fits into the JavaFX model.
 // imports
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane; 
@@ -22,9 +21,4 @@ public class Abalone { // overridden init method
       // private fields for this class
 private  StackPane sp_mainlayout; 
 private CustomControl cc_custom;
-
-
-
-
-
 }

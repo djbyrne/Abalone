@@ -81,6 +81,7 @@ public static void setCell(int x, int y, int t)
 	renders[x][y].getCell().setOpacity(1);
 }
 
+
       // public method for resetting the game
 public void resetGame() {
 }
