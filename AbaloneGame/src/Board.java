@@ -86,11 +86,6 @@ public static void setCell(int x, int y, int t)
 public void resetGame() {
 }
 
-
-      // public method that tries to place a piece
-public void placePiece(final double x, final double y) {
-	
-}
 // private fields of the class
 private static int[][] board; // array that holds all pieces
 private static CellControl[][] renders; // array that holds all the render pieces
@@ -104,8 +99,6 @@ private double cell_width, cell_height;
 private Translate ch_one, ch_two, cw_one, cw_two;
 private int current_player;
 private int rowCounter,cellCounter,maxCounter;
-
-
       // constants for the class
 private final int EMPTY = 0; private final int BLACK = 1; private final int WHITE = 2;
 }

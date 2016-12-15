@@ -91,7 +91,6 @@ public void findNeighbors()
 		cc = Board.getCell(boardX+directions[i][0], boardY+directions[i][1]);
 		neighbors[i] = cc;
 	}
-	
 }
 
 public void placePiece(CellControl[] selected){
@@ -111,9 +110,7 @@ public void placePiece(CellControl[] selected){
 	
 	if(place)
 	{
-	
 		GameLogic.placePiece();
-		
 	}
 	else
 	{
@@ -128,7 +125,7 @@ public CellControl[] getNieghbors()
 	return neighbors;
 }
 
-//check if a cell is a neighbour of this cell
+//check if a cell is a neighbour of this cell and returns the direction
 public int isNeighbor(CellControl c)
 {
 	//loop through array and check if c is contained in the array

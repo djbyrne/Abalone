@@ -17,7 +17,7 @@ sp_mainlayout.getChildren().add(cc_custom);
 public void start(Stage primaryStage) {
 // set a size, title and a scene on the main window. show it when // ready
 primaryStage.setTitle("Abalone"); 
-primaryStage.setScene(new Scene(sp_mainlayout, 380, 170)); 
+primaryStage.setScene(new Scene(sp_mainlayout, 450, 200)); 
 primaryStage.show();
 }
       // overridden stop method
