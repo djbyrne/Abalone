@@ -51,23 +51,57 @@ class CellControl extends Control { // constructor for the class
 				rightClick();
 				
 			}
+			//left click
 			else{
 				
-				//print this cells co-ordinates
-				System.out.println("cell:"+getBoardX()+":"+getBoardY());
-				if(neighbors[0] == null){findNeighbors();}
-				CellControl[] selected = GameLogic.getSelected();
-				CellControl first = selected[0];
-				if(selected[0] != null && cell.getType() == 0)
+				//check if its an odd or even cell
+				if (boardY%2 != 0){
+					//System.out.println("even");
+			    }
+			    else {
+			    	//System.out.println("odd");
+			    }
+				//check if it is an opponent cell
+				if(getCell().getType() != GameLogic.getPlayer() && getCell().getType() !=0 )
 				{
-					//check if this piece is a neighbor of the currently selected piece
-					CellControl[] selectedCells = GameLogic.getSelected();
-					placePiece(selected);
+					//pushing opponents piece
+					//check if it is a sideways move
+					if(GameLogic.checkTypeOfMove() == 1)push();
+					else if(GameLogic.checkTypeOfMove() == 0)System.out.println("CAN not push sideways");
 				}
 				else
 				{
-					System.out.println("no piece selected");
+					//check if this is already selected
+					if(isSelected)
+					{
+						//empty the selected array
+						isSelected = false;
+						GameLogic.emptySelected();
+						GameLogic.emptyTargets();
+					}
+					else
+					{
+						isSelected= true;
+						if(neighbors[0] == null){findNeighbors();}
+						CellControl[] selected = GameLogic.getSelected();
+						CellControl first = selected[0];
+						
+						//check if the piece is empty
+						if(selected[0] != null && cell.getType() == 0)
+						{
+							//check if this piece is a neighbor of the currently selected piece
+							CellControl[] selectedCells = GameLogic.getSelected();
+							placePiece(selected);
+						}
+						else
+						{
+							System.out.println("no piece selected");
+						}
+						
+					}
 				}
+				
+				
 			}
 			
 		}
@@ -79,6 +113,30 @@ public void resize(double width, double height) {
 	// update the size of the rectangle
 	super.resize(width, height); 
 	cell.resize(width, height);
+}
+
+public void push()
+{
+	//print push
+	System.out.println("push");
+	GameLogic.setMoveDir(GameLogic.findMoveDir(this));
+	
+	//highlight the cells behind the pushed cell
+	
+	//get selected weight
+	System.out.println("weight = "+GameLogic.getSelectedWeight());
+	
+	//find weight of the toPushArray
+	System.out.println("push weight = "+GameLogic.setPushPieces(this));
+	
+	
+	//compare the weights
+	if(GameLogic.getSelectedWeight() > GameLogic.setPushPieces(this))
+	{
+		//System.out.println("push succesful");
+		
+		GameLogic.setPushSelected();
+	}
 }
 
 //populates neighbor array
@@ -96,6 +154,7 @@ public void findNeighbors()
 public void placePiece(CellControl[] selected){
 	//set the move direction
 	GameLogic.setMoveDir(GameLogic.findMoveDir(this));
+	System.out.println("set move direction to"+GameLogic.findMoveDir(this));
 	boolean place = false;
 	CellControl[] n = GameLogic.getSelectedNeighbors();
 	
@@ -139,11 +198,21 @@ public int isNeighbor(CellControl c)
 	return 6; //6 means that it is not a neighbor
 }
 
+public CellControl getNeighbor(int direction)
+{
+	
+	return neighbors[direction];
+}
+
 public void rightClick()
 {
 	//check if the cell clicked is the correct player
 	findNeighbors();
-	if(GameLogic.getPlayer() == cell.getType())GameLogic.setSelected(this);
+	if(GameLogic.getPlayer() == cell.getType())
+	{
+		GameLogic.setSelected(this);
+		isSelected = true;
+	}
 	else System.out.println("not your turn");
 	
 }

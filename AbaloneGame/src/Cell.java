@@ -37,6 +37,11 @@ public void placePiece()
 	setType(GameLogic.getPlayer());
 }
 
+public void fillCell(CellControl c)
+{
+	setType(c.getCell().getType());
+}
+
 public void setSelected()
 {
 	this.setOpacity(.5);
